@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"citrus/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -94,6 +96,9 @@ type variableProperties struct {
 		Pdk struct {
 			Enabled *bool
 		}
+
+		// include Citrus variables
+		*android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -169,6 +174,9 @@ type productVariables struct {
 	DeviceKernelHeaders []string `json:",omitempty"`
 
 	BoardUsesQTIHardware *bool `json:",omitempty"`
+
+	// include Citrus variables
+	*android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
